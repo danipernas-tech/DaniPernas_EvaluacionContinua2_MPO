@@ -23,12 +23,19 @@ def listar_contenido():
             print(f"Archivo {elemento}")
 
 def crear_directorio():
-    pass
+    nombre_carpeta = input("\nIntroduce el nombre de la carpeta nueva: ")
+    try:
+        os.mkdir(nombre_carpeta)
+    except FileExistsError:
+        print("Ya existe una carpeta con ese nombre")
+    else:
+        print(f"Se ha creado la carpeta {nombre_carpeta}")
+
 
 
 while True:
-    print(f"Contenido de {os.getcwd()}")
-    print("--- MENÚ PRINCIPAL ---")
+    print(f"\nContenido de {os.getcwd()}")
+    print("\n--- MENÚ PRINCIPAL ---")
     print("1. Listar contenido del directorio actual")
     print("2. Crear un nuevo directorio")
     print("3. Crear un archivo de texto")
@@ -47,7 +54,7 @@ while True:
         case 1: 
             listar_contenido() # LLamada funcion
         case 2:
-            print("2")
+            crear_directorio()
         case 3:
             print("3")
         case 4:
