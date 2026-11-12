@@ -27,9 +27,30 @@ def crear_directorio():
     try:
         os.mkdir(nombre_carpeta)
     except FileExistsError:
-        print("Ya existe una carpeta con ese nombre")
+        print("\nYa existe una carpeta con ese nombre")
+    except PermissionError:
+        print("\nNo tienes permiso para crear una carpeta")
     else:
-        print(f"Se ha creado la carpeta {nombre_carpeta}")
+        print(f"\nSe ha creado la carpeta {nombre_carpeta}")
+
+def crear_archivo_texto():
+    nombre = input("\nIntroduce el nombre del archivo de texto que quieres crear: ")
+    with open(nombre, "w", encoding="utf-8") as archivo:
+        archivo.close
+
+def escribir_archivo():
+    nombre = input("\nEn que archivo quieres escribir: ")
+    try: 
+        with open(nombre, "a", encoding="utf-8") as archivo:
+            archivo.write("\nHola, me llamo Dani!")
+            archivo.close
+    except FileNotFoundError:
+        print("\nNo existe ese archivo")
+    else:
+        print(f"\nSe ha escrito en el archivo {nombre}")
+
+def eliminar_archico_directorio():
+    pass
 
 
 
@@ -56,9 +77,9 @@ while True:
         case 2:
             crear_directorio()
         case 3:
-            print("3")
+            crear_archivo_texto()
         case 4:
-            print("4")
+            escribir_archivo()
         case 5:
             print("5")
         case 6:
